@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Das deck</title>
+</head>
+
+<body onload="carregamento()">
+    <h1>Jogos das deck - Marvel</h1>
+    <p>Pontos jogador: <span id="jogador">0</span></p>
+    <p>Pontos máquina: <span id="maquina">0</span></p>
+    <h1>Baralho restante do jogador</h1>
+    <div id="baralhoJogador"></div>
+    <h1>Baralho restante do Adversário</h1>
+    <div id="baralhoMaquina"></div>
+    <button onclick="simular()">Simular batalha</button>
+</body>
+
+</html>
+<script>
+    var pontos_jogador = 0
+    var pontos_maquina = 0
+
+    const deck = [
+        { link: '<img src="cartas/capitao_america.png" width="150px">', att: 3, res: 3 },
+        { link: '<img src="cartas/deadpool.png" width="150px">', att: 1, res: 1 },
+        { link: '<img src="cartas/homem_de_ferro.png" width="150px">', att: 5, res: 0 },
+        { link: '<img src="cartas/mercurio.png" width="150px">', att: 1, res: 2 },
+        { link: '<img src="cartas/mulher_invisivel.png" width="150px">', att: 2, res: 2 },
+        { link: '<img src="cartas/sr_fantastico.png" width="150px">', att: 3, res: 2 },
+        { link: '<img src="cartas/thor.png" width="150px">', att: 3, res: 4 },
+        { link: '<img src="cartas/venom.png" width="150px">', att: 3, res: 1 },
+        { link: '<img src="cartas/viuva_negra.png" width="150px">', att: 2, res: 1 },
+        { link: '<img src="cartas/wolverine.png" width="150px">', att: 2, res: 3 }
+    ]
+    var mao1 = [];
+    var mao2 = [];
+
+    function carregamento() {
+        
+        for (let index = 0; index < 5; index++) {
+            var sorteio_jogador = Number((Math.random() * 9).toFixed(0));
+            var sorteio_maquina = Number((Math.random() * 9).toFixed(0));
+
+            var contador = 0;
+            if (mao1.indexOf(deck[sorteio_jogador]) > -1) {
+                alert(`Eu sabia`)
+                // carregamento()
+            } else {
+                if (mao1.length <= 4) {                    
+                    mao1.push(deck[sorteio_jogador].link)
+                }
+            }
+
+            if (mao2.indexOf(deck[sorteio_maquina].link) > -1) {
+                alert(`Eu sabia`)
+                // carregamento()
+            } else {
+                if (mao2.length <= 4) {                    
+                    mao2.push(deck[sorteio_maquina].link)
+                }
+            }
+        }
+
+        if (mao1.length == 5 && mao2.length == 5 ) {
+            exibir();
+        }
+    }
+
+    function exibir() {
+        for (let index = 0; index <= 4; index++) {            
+            baralhoJogador.innerHTML += mao1[index];
+            baralhoMaquina.innerHTML += mao2[index];
+        }
+    }
+
+
+    //     if (mao1 == ``){
+    //         mao1.push(deck[sorteio_jogador])
+    //             var jog = deck[sorteio_jogador].link
+    //             baralhoJogador.innerHTML += jog;
+
+    //             mao2.push(deck[sorteio_maquina])
+    //             var maq = deck[sorteio_maquina].link
+    //             baralhoMaquina.innerHTML += maq;
+    //     } else {
+    //         for (let index = 0; index < mao1.length; index++) {
+    //             if(mao1[index] != deck[sorteio_jogador]){
+    //             mao1.push(deck[sorteio_jogador])
+    //             var jog = deck[sorteio_jogador].link
+    //             baralhoJogador.innerHTML += jog;
+
+    //         }else{
+
+    //         }
+    //         if(mao2[index] != deck[sorteio_maquina]){
+    //             mao2.push(deck[sorteio_maquina])
+    //             var maq = deck[sorteio_maquina].link
+    //             baralhoMaquina.innerHTML += maq;
+    //         }else {
+
+    //         }
+    //     }
+    // }
+    //     // if(){
+
+    //     console.log(mao1 , mao2)
+
+
+       
+
+
+    //     // }
+
+    function simular() {
+
+    }
+</script>
